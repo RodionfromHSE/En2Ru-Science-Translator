@@ -19,11 +19,12 @@ jobs:
 
       - name: Install dependencies
         run: |
+          cd web
           npm install -g pnpm
           pnpm install
 
       - name: Build
-        run: npm run build
+        run: cd web && npm run build
 
   deploy:
     runs-on: ubuntu-latest
@@ -38,7 +39,7 @@ jobs:
 #      - name: Deploy to Cloudflare Pages
 #        uses: cloudflare/cloudflare-pages-deploy-action@main
 #        with:
-#          script: npm run build
-#          directory: dist
+#          script: cd web && npm run build
+#          directory: web/dist
 #          token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 #          site: en2ru
