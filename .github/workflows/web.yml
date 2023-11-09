@@ -34,10 +34,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/cloudflare-pages-deploy-action@main
-        with:
-          script: npm run build
-          directory: dist
-          token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          site: en2ru
+# FIXME: add secret to github repo
+#      - name: Deploy to Cloudflare Pages
+#        uses: cloudflare/cloudflare-pages-deploy-action@main
+#        with:
+#          script: npm run build
+#          directory: dist
+#          token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+#          site: en2ru
