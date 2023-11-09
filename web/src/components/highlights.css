@@ -1,0 +1,37 @@
+/* attention highlights gradations */
+
+.attn5 {
+    border-radius: 3px;
+    background-color: #98b7f8e0;
+}
+
+.attn4 {
+    border-radius: 3px;
+    background-color: #98b7f8c0;
+}
+
+.attn3 {
+    border-radius: 3px;
+    background-color: #98b7f8a0;
+}
+
+.attn2 {
+    border-radius: 3px;
+    background-color: #98b7f880;
+}
+
+.attn1 {
+    border-radius: 3px;
+    background-color: #98b7f860;
+}
+
+mark.my-invisible {
+  border-radius: 3px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+mark.my-invisible:hover {
+  background-color: #98b7f8e0;
+}
+

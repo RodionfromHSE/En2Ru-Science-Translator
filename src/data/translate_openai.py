@@ -2,7 +2,7 @@ from typing import List
 
 import openai
 
-default_prompt = """Translate the provided scientific texts from English to Russian. Before translation, please make sure to clean up any messy or illegible symbols within the texts. Ensure that 
+default_prompt = """Translate the provided scientific texts from English to Russian. Before service, please make sure to clean up any messy or illegible symbols within the texts. Ensure that 
 there are no additional explanations or content in the translations. The outputs must contain precisely the same 
 information as the cleaned-up inputs."""
 
