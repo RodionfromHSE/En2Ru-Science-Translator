@@ -9,6 +9,7 @@ export default function TranslationTextarea({
   onChange,
   highlight,
   elementId,
+  placeholder = "Enter text here...",
   readOnly = false,
 }: {
   value: string;
@@ -16,10 +17,11 @@ export default function TranslationTextarea({
   highlight: any;
   elementId: string;
   readOnly: boolean;
+  placeholder?: string;
 }) {
   return (
     <div
-      className="w-full border rounded-lg py-2 px-3 border-input bg-background text-lg ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+      className="w-full border rounded-lg py-2 px-3 border-input bg-background text-lg-primary ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
       id={elementId}
     >
       <HighlightWithinTextarea
@@ -27,7 +29,7 @@ export default function TranslationTextarea({
         highlight={highlight}
         onChange={onChange}
         readOnly={readOnly}
-        placeholder={"Enter text here..."}
+        placeholder={placeholder}
       />
     </div>
   );

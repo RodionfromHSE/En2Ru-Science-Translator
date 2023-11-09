@@ -13,7 +13,7 @@ export default function TranslationModule() {
   const [inputValue, inputSetValue] = useState("");
   const [inputHighlight, inputSetHighlight] = useState("");
 
-  const [outputValue, outputSetValue] = useState(" ");
+  const [outputValue, outputSetValue] = useState("");
   const [outputHighlight, outputSetHighlight] = useState("");
 
   const [isTranslated, setIsTranslated] = useState(false);
@@ -27,6 +27,9 @@ export default function TranslationModule() {
   const translationService = new MockTranslationService();
 
   function translate() {
+    if (inputValue === "") {
+      return;
+    }
     console.log("To be translated: " + inputValue);
     setIsLoading(true);
     const result = translationService.predict(inputValue);
@@ -50,9 +53,10 @@ export default function TranslationModule() {
             value={inputValue}
             onChange={inputSetValue}
             elementId={"textToTranslate"}
+            placeholder={"Enter text here..."}
             readOnly={isTranslated}
           />
-          <div className="mb-4">
+          <div className="mt-4">
             <Button className="bg-primary" onClick={translate}>
               Translate
             </Button>
@@ -67,6 +71,7 @@ export default function TranslationModule() {
               value={outputValue}
               onChange={outputSetValue}
               highlight={outputHighlight}
+              placeholder={"Translation will appear here..."}
               elementId={"translatedText"}
               readOnly={true}
             />

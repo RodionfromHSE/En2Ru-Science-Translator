@@ -10,7 +10,7 @@ export class MockTranslationService implements TranslationService {
     return Promise.resolve(true);
   }
   predict(text: string): Promise<[Token[], Token[]]> {
-    const rawTokens = text.split(/\b/);
+    const rawTokens = text.split(/(?<=\s)(?=\S)/);
 
     const inputTokens = this.genTokenInfo(
       rawTokens,
@@ -20,6 +20,9 @@ export class MockTranslationService implements TranslationService {
       this.sampleTranslatedTokens,
       rawTokens,
     );
+
+    console.log("inputTokens", inputTokens);
+    console.log("outputTokens", outputTokens);
 
     // artificial timeout
     return new Promise((resolve) => {

@@ -75,16 +75,10 @@ export class TranslationData {
     const curTokens = this.tokens[index];
     const otherTokens = this.tokens[1 - index];
 
-    // Create a list of token ranges for the other text area.
-    let otherTokenRanges: [number, number][] = [];
-    let curIndex = 0;
-    for (const token of otherTokens) {
-      const tokenLength = token.text.length;
-      otherTokenRanges.push([curIndex, curIndex + tokenLength]);
-      curIndex += tokenLength;
-    }
+    let curTokenRanges = this.tokenRanges(curTokens);
+    let otherTokenRanges = this.tokenRanges(otherTokens);
 
-    return curTokens.map((token) => {
+    return curTokens.map((token, i) => {
       const hoveredHighlight = token.attentionScores
         ?.map((score) => {
           const className = this.attentionStyle(score.attentionScore);
@@ -98,7 +92,7 @@ export class TranslationData {
         })
         .filter((highlight) => highlight?.className !== undefined);
       return {
-        highlight: token.text,
+        highlight: curTokenRanges[i],
         component: InvisibleMark(
           token.probScores,
           this,
@@ -107,6 +101,17 @@ export class TranslationData {
         ),
       };
     });
+  }
+
+  private tokenRanges(otherTokens: Token[]): [number, number][] {
+    let otherTokenRanges: [number, number][] = [];
+    let curIndex = 0;
+    for (const token of otherTokens) {
+      const tokenLength = token.text.length;
+      otherTokenRanges.push([curIndex, curIndex + tokenLength]);
+      curIndex += tokenLength;
+    }
+    return otherTokenRanges;
   }
 
   public updateDefault() {

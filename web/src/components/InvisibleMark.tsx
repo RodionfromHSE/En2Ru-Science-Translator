@@ -17,8 +17,9 @@ export default function InvisibleMark(
     let isOpened = false;
     let isHovered = false;
 
+    // FIXME: still buggy
     function updateHighlights() {
-      console.log("uh: " + isOpened + " " + isHovered);
+      console.log("updateHighlights: " + isOpened + " " + isHovered);
       if (isOpened || isHovered) {
         if (highlight_other) {
           translationData.controller.setHighlights[1 - translation_index](
@@ -40,7 +41,7 @@ export default function InvisibleMark(
         >
           <HoverCardTrigger asChild>
             <mark
-              className={"my-invisible"}
+              className={"my-invisible text-primary"}
               onMouseOver={() => {
                 isHovered = true;
                 updateHighlights();
