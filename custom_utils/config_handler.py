@@ -1,7 +1,8 @@
 from omegaconf import OmegaConf
 import json
+import typing as tp
 
-def read_config(path: str, root: str | None = None) -> OmegaConf:
+def read_config(path: str, root: tp.Optional[str] = None) -> OmegaConf:
     """
     :@param path: path to the config file
     :@param root: root of the project to be set in config (optional)
@@ -14,5 +15,5 @@ def read_config(path: str, root: str | None = None) -> OmegaConf:
     cfg = OmegaConf.create(cfg)
     return cfg
 
-def pprint_config(cfg: OmegaConf):
+def pprint_config(cfg: OmegaConf) -> None:
     print(json.dumps(OmegaConf.to_container(cfg), indent=2))
