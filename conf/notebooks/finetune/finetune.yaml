@@ -1,0 +1,19 @@
+mt_model:
+  name: transformer-en-ru
+  model_and_tokenizer_name: Helsinki-NLP/opus-mt-en-ru
+  output_dir: ${root}/models/${mt_model.name}/finetuned
+
+dataset:
+  dir: ${root}/data/processed
+  train: ${dataset.dir}/train.csv
+  test: ${dataset.dir}/test.csv
+  valid: ${dataset.dir}/valid.csv
+
+finetune:
+  batch_size: 16
+  epochs: 3
+  lr: 3e-5
+  warmup_steps: 500
+  weight_decay: 0.01
+  grad_accum_steps: 3
+

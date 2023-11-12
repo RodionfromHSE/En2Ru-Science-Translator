@@ -1,0 +1,6 @@
+path: ${root}/data/processed/model_eval_results.csv
+cols:
+  reference: 'target'
+  candidates:
+    - transformer-en-ru
+    - nnlb-1.3B-distilled

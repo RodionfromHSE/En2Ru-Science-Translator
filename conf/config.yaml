@@ -1,0 +1,11 @@
+defaults:
+  - _self_
+  - dataset: 'model_eval'
+
+root: /Users/user010/Desktop/Programming/ML/En2RuTranslator
+notebook_configs:
+  dir: ${root}/conf/notebooks
+  finetune:
+    model_eval: ${notebook_configs.dir}/finetune/model_eval.yaml
+    candidates_inference: ${notebook_configs.dir}/finetune/candidates_inference.yaml
+    finetune: ${notebook_configs.dir}/finetune/finetune.yaml

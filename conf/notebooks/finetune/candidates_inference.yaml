@@ -1,0 +1,13 @@
+root: ???
+
+nnlb_model:
+  name: nnlb-1.3B-distilled
+  model_and_tokenizer_name: facebook/nllb-200-distilled-1.3B
+
+mt_model:
+  name: transformer-en-ru
+  model_and_tokenizer_name: Helsinki-NLP/opus-mt-en-ru
+
+inference_dataset_path: ${root}/data/processed/model_eval.csv
+results_path: ${root}/data/processed/model_eval_results.csv
+    
