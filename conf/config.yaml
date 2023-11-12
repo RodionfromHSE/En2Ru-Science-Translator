@@ -2,7 +2,7 @@ defaults:
   - _self_
   - dataset: 'model_eval'
 
-root: /Users/user010/Desktop/Programming/ML/En2RuTranslator
+root: /home/jovyan/rodion/other/trans
 notebook_configs:
   dir: ${root}/conf/notebooks
   finetune:
