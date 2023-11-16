@@ -1,17 +1,18 @@
 import os
 import sys
-import hydra
+
+root_dir = os.path.abspath(os.path.join(__file__, '../../..'))
+sys.path.append(root_dir)
+
 import pandas as pd
 import sacrebleu
+from omegaconf import OmegaConf
+from custom_utils.config_handler import read_config, pprint_config
 
-from omegaconf import DictConfig, OmegaConf
 
-root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-conf_path = os.path.join(root_dir, "conf")
-
-@hydra.main(version_base=None, config_path=conf_path, config_name="config")
-def main(cfg: OmegaConf) -> None:
-    cfg = OmegaConf.create(OmegaConf.to_yaml(cfg, resolve=True))
+def main() -> None:
+    cfg: OmegaConf = read_config(overrides=["dataset=model_eval"])
+    pprint_config(cfg)
 
     # Load data
     data = pd.read_csv(cfg.dataset.path)

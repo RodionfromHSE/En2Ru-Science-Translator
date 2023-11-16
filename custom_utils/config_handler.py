@@ -4,8 +4,10 @@ import typing as tp
 import os
 from hydra import initialize_config_dir, compose
 
+__ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+__CONFIG_DIR = os.path.join(__ROOT_DIR, "conf")
 
-def read_config(config_dir: str, overrides: tp.Optional[tp.List[str]] = None) -> OmegaConf:
+def read_config(config_dir: str = __CONFIG_DIR, overrides: tp.Optional[tp.List[str]] = None) -> OmegaConf:
     """
     :@param config_dir: path to config directory
     :@param overrides: list of overrides (e.g. ["dataset=model_eval"])
