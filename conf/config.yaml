@@ -1,11 +1,9 @@
 defaults:
   - _self_
-  - dataset: 'model_eval'
+  - dataset: null
+  - model: null
+  - params: null
+  - setup: null
+  
 
-root: /home/jovyan/rodion/other/trans
-notebook_configs:
-  dir: ${root}/conf/notebooks
-  finetune:
-    model_eval: ${notebook_configs.dir}/finetune/model_eval.yaml
-    candidates_inference: ${notebook_configs.dir}/finetune/candidates_inference.yaml
-    finetune: ${notebook_configs.dir}/finetune/finetune.yaml
+root: /Users/user010/Desktop/Programming/ML/En2RuTranslator

@@ -1,0 +1,6 @@
+# @package _global_
+
+defaults:
+  - /model@model1: opus_en_ru
+  - /model@model2: opus_distilled_en_ru
+  - override /dataset: unarxive

@@ -1,0 +1,3 @@
+name: opus-distilled-en-ru
+model_and_tokenizer_name: "under-tree/transformer-en-ru"
+output_dir: ${root}/models/${.name}/finetuned
