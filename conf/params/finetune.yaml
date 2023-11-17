@@ -1,4 +1,5 @@
 batch_size: 16
+max_length: 512
 train_args:
   evaluation_strategy: epoch
   learning_rate: 2e-5
