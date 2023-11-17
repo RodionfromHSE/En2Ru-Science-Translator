@@ -9,3 +9,7 @@ train_args:
   save_total_limit: 3
   num_train_epochs: 4
   predict_with_generate: true
+
+wandb_args:
+  report_to: wandb
+  run_name: finetune
