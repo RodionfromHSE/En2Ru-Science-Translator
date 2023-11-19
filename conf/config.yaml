@@ -6,4 +6,4 @@ defaults:
   - setup: null
   
 
-root: /home/jovyan/rodion/other/trans
+root: /Users/user010/Desktop/Programming/ML/En2RuTranslator
