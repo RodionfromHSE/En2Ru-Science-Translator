@@ -1,5 +1,7 @@
 "use client";
 
+import "draft-js/dist/Draft.css";
+
 import HighlightWithinTextarea from "react-highlight-within-textarea";
 
 import "./highlights.css";
