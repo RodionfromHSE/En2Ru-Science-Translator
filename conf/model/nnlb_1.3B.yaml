@@ -1,0 +1,2 @@
+name: nnlb-1.3B-distilled
+model_and_tokenizer_name: facebook/nllb-200-distilled-1.3B

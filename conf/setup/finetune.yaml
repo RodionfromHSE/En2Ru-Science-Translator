@@ -1,0 +1,7 @@
+# @package _global_
+
+defaults:
+  - /model@pretrained: opus_en_ru
+  - /model@finetuned: opus_distilled_en_ru
+  - override /dataset: unarxive
+  - override /params: finetune

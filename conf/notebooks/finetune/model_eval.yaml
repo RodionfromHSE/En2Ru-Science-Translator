@@ -1,0 +1,7 @@
+root: ???
+load_dataset_params:
+  path: 'turkic_xwmt'
+  name: 'ru-en'
+  split: 'test'
+save_path: '${root}/data/processed/model_eval.csv'
+

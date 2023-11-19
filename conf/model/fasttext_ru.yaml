@@ -1,0 +1,2 @@
+path: ${root}/models/embs/cc.ru.100.bin
+type: fasttext

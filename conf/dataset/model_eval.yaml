@@ -1,0 +1,7 @@
+path: ${root}/data/processed/model_eval_results.csv
+
+cols:  # cols to be used when calculating BLEU
+  reference: target
+  candidates:
+    - transformer-en-ru
+    - nnlb-1.3B-distilled

@@ -1,0 +1,8 @@
+# @package _global_
+
+defaults:
+  - /model@dest_synonym_searcher: fasttext_ru
+  - /model@src_synonym_searcher: fasttext_en
+  - /model@translator: opus_distilled_en_ru
+  - /model@attention_extractor: random_attention_extractor
+  - override /params: finetune
