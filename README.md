@@ -115,6 +115,11 @@ eval_bleu: 67.197
 ```
 (BLEU is suspeciously high)
 
+## Translation App
+
+**Synonyms Searcher**\
+Simple version is based on `word2vec` model, namely `fasttext` ([link](https://fasttext.cc/docs/en/crawl-vectors.html)). We've chosen fasttext because it solves the problem of out-of-vocabulary words.
+
 
 
 
