@@ -46,7 +46,7 @@ export default function TranslationModule() {
       {/* Content */}
       <div className="container mx-auto p-4 md:flex">
         {/* Left Column */}
-        <div className="w-full md:w-1/2 md:pr-4">
+        <div className="w-full md:w-1/2 md:pr-4 mb-3">
           <Label>Text to Translate</Label>
           <TranslationTextarea
             highlight={inputHighlight}
