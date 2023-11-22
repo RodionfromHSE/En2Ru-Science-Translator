@@ -7,7 +7,7 @@ import TranslationTextarea from "./TranslationTextarea";
 import { Controller } from "@/highlighting/Controller.ts";
 import { TranslationData } from "@/highlighting/context.ts";
 import { Skeleton } from "@/components/ui/skeleton.tsx";
-import { MockTranslationService } from "@/service/mock-translation.ts";
+import { GradioTranslation } from "@/service/gradio-translation.ts";
 
 export default function TranslationModule() {
   const [inputValue, inputSetValue] = useState("");
@@ -24,16 +24,17 @@ export default function TranslationModule() {
   );
 
   const [isLoading, setIsLoading] = useState(false);
-  const translationService = new MockTranslationService();
+  const translationService = new GradioTranslation();
 
   function translate() {
-    if (inputValue === "") {
+    if (inputValue === "" || isLoading || isTranslated) {
       return;
     }
     console.log("To be translated: " + inputValue);
     setIsLoading(true);
     const result = translationService.predict(inputValue);
     result.then((tokens) => {
+      console.log("Translated: " + tokens);
       setIsLoading(false);
       setIsTranslated(true);
       const translationData = new TranslationData(tokens, controller);
@@ -54,10 +55,14 @@ export default function TranslationModule() {
             onChange={inputSetValue}
             elementId={"textToTranslate"}
             placeholder={"Enter text here..."}
-            readOnly={isTranslated}
+            readOnly={isTranslated || isLoading}
           />
           <div className="mt-4">
-            <Button className="bg-primary" onClick={translate}>
+            <Button
+              className="bg-primary"
+              onClick={translate}
+              disabled={isTranslated || isLoading}
+            >
               Translate
             </Button>
           </div>
