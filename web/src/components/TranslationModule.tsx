@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import TranslationTextarea from "./TranslationTextarea";
 import { Controller } from "@/highlighting/Controller.ts";
-import { TranslationData } from "@/highlighting/context.ts";
+import { TranslationData } from "@/highlighting/dataclasses.ts";
 import { Skeleton } from "@/components/ui/skeleton.tsx";
 import { GradioTranslation } from "@/service/gradio-translation.ts";
 
@@ -18,28 +18,38 @@ export default function TranslationModule() {
 
   const [isTranslated, setIsTranslated] = useState(false);
 
-  const controller = new Controller(
-    [inputSetValue, outputSetValue],
-    [inputSetHighlight, outputSetHighlight],
+  const [controller, _] = useState(
+    new Controller(
+      [inputSetValue, outputSetValue],
+      [inputSetHighlight, outputSetHighlight],
+    ),
   );
 
   const [isLoading, setIsLoading] = useState(false);
   const translationService = new GradioTranslation();
 
   function translate() {
-    if (inputValue === "" || isLoading || isTranslated) {
+    if (inputValue === "" || isLoading) {
       return;
     }
     console.log("To be translated: " + inputValue);
     setIsLoading(true);
-    const result = translationService.predict(inputValue);
-    result.then((tokens) => {
-      console.log("Translated: " + tokens);
+
+    // Translation
+    try {
+      const result = translationService.predict(inputValue);
+      result.then((tokens) => {
+        console.log("Translated: " + tokens);
+        setIsLoading(false);
+        setIsTranslated(true);
+        const translationData = new TranslationData(tokens);
+        controller.setTranslationData(translationData);
+      });
+    } catch (e) {
+      console.error(e);
       setIsLoading(false);
-      setIsTranslated(true);
-      const translationData = new TranslationData(tokens, controller);
-      translationData.updateDefault();
-    });
+      alert("Translation failed. Please try again.");
+    }
   }
 
   function clearInput() {
@@ -48,6 +58,13 @@ export default function TranslationModule() {
     outputSetValue("");
     outputSetHighlight("");
     setIsTranslated(false);
+  }
+
+  function handleInput(inputText: string) {
+    inputSetValue(inputText);
+    if (isTranslated && inputText !== inputValue) {
+      controller.sendGlobalKill();
+    }
   }
 
   return (
@@ -60,16 +77,16 @@ export default function TranslationModule() {
           <TranslationTextarea
             highlight={inputHighlight}
             value={inputValue}
-            onChange={inputSetValue}
+            onChange={handleInput}
             elementId={"textToTranslate"}
             placeholder={"Enter text here..."}
-            readOnly={isTranslated || isLoading}
+            readOnly={isLoading}
           />
           <div className="mt-4">
             <Button
               className="primary"
               onClick={translate}
-              disabled={isLoading || isTranslated}
+              disabled={isLoading}
             >
               Translate
             </Button>{" "}

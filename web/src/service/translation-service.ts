@@ -1,4 +1,4 @@
-import { Token } from "@/highlighting/context.ts";
+import { Token } from "@/highlighting/dataclasses.ts";
 
 /**
  * Represents a TranslationService.

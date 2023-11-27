@@ -2,7 +2,7 @@ import {
   Token,
   TokenAttentionScore,
   TokenProbScore,
-} from "@/highlighting/context.ts";
+} from "@/highlighting/dataclasses.ts";
 import TranslationService from "@/service/translation-service.ts";
 import { client } from "@gradio/client";
 

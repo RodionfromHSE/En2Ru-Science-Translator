@@ -1,28 +1,23 @@
 /* attention highlights gradations */
 
 .attn5 {
-    border-radius: 3px;
-    background-color: #98b7f8e0;
+    background-color: #98b7f8e0 !important;
 }
 
 .attn4 {
-    border-radius: 3px;
-    background-color: #98b7f8c0;
+    background-color: #98b7f8c0 !important;
 }
 
 .attn3 {
-    border-radius: 3px;
-    background-color: #98b7f8a0;
+    background-color: #98b7f8a0 !important;
 }
 
 .attn2 {
-    border-radius: 3px;
-    background-color: #98b7f880;
+    background-color: #98b7f880 !important;
 }
 
 .attn1 {
-    border-radius: 3px;
-    background-color: #98b7f860;
+    background-color: #98b7f860 !important;
 }
 
 mark.my-invisible {
@@ -33,4 +28,9 @@ mark.my-invisible {
 
 mark.my-invisible:hover {
   background-color: #98b7f8e0;
+}
+
+mark.killed:hover {
+  background-color: transparent !important;
+  cursor: text !important;
 }

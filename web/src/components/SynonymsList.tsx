@@ -1,4 +1,4 @@
-import { TokenProbScore } from "@/highlighting/context.ts";
+import { TokenProbScore } from "@/highlighting/dataclasses.ts";
 
 export default function SynonymsList({
   synonyms,
