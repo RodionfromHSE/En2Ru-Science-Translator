@@ -42,6 +42,14 @@ export default function TranslationModule() {
     });
   }
 
+  function clearInput() {
+    inputSetValue("");
+    inputSetHighlight("");
+    outputSetValue("");
+    outputSetHighlight("");
+    setIsTranslated(false);
+  }
+
   return (
     <>
       {/* Content */}
@@ -59,11 +67,20 @@ export default function TranslationModule() {
           />
           <div className="mt-4">
             <Button
-              className="bg-primary"
+              className="primary"
               onClick={translate}
-              disabled={isTranslated || isLoading}
+              disabled={isLoading || isTranslated}
             >
               Translate
+            </Button>{" "}
+            <Button
+              variant="outline"
+              onClick={() => {
+                clearInput();
+              }}
+              disabled={inputValue === "" || (!isTranslated && isLoading)}
+            >
+              Clear
             </Button>
           </div>
         </div>
@@ -82,7 +99,7 @@ export default function TranslationModule() {
             />
           )}
           {/*  add skeleton */}
-          {isLoading && <Skeleton className={"w-full h-[200px] rounded-3"} />}
+          {isLoading && <Skeleton className={"w-full h-[13em] rounded-3"} />}
         </div>
       </div>
     </>
