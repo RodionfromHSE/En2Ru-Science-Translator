@@ -8,6 +8,15 @@ import { Controller } from "@/highlighting/Controller.ts";
 import { TranslationData } from "@/highlighting/dataclasses.ts";
 import { Skeleton } from "@/components/ui/skeleton.tsx";
 import { GradioTranslation } from "@/service/gradio-translation.ts";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog.tsx";
 
 export default function TranslationModule() {
   const [inputValue, inputSetValue] = useState("");
@@ -28,6 +37,8 @@ export default function TranslationModule() {
   const [isLoading, setIsLoading] = useState(false);
   const translationService = new GradioTranslation();
 
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
+
   function translate() {
     if (inputValue === "" || isLoading) {
       return;
@@ -36,20 +47,20 @@ export default function TranslationModule() {
     setIsLoading(true);
 
     // Translation
-    try {
-      const result = translationService.predict(inputValue);
-      result.then((tokens) => {
+    const result = translationService.predict(inputValue);
+    result
+      .then((tokens) => {
         console.log("Translated: " + tokens);
         setIsLoading(false);
         setIsTranslated(true);
         const translationData = new TranslationData(tokens);
         controller.setTranslationData(translationData);
+      })
+      .catch((e) => {
+        console.error(e);
+        setIsLoading(false);
+        setIsAlertOpen(true);
       });
-    } catch (e) {
-      console.error(e);
-      setIsLoading(false);
-      alert("Translation failed. Please try again.");
-    }
   }
 
   function clearInput() {
@@ -69,6 +80,27 @@ export default function TranslationModule() {
 
   return (
     <>
+      <AlertDialog open={isAlertOpen}>
+        {/*<AlertDialogTrigger>Open</AlertDialogTrigger>*/}
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Unable to translate</AlertDialogTitle>
+            <AlertDialogDescription>
+              Sorry, we were unable to process your request. Please try again
+              later or try to translate a shorter text.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction
+              onClick={() => {
+                setIsAlertOpen(false);
+              }}
+            >
+              Continue
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
       {/* Content */}
       <div className="container mx-auto p-4 md:flex">
         {/* Left Column */}
@@ -95,7 +127,7 @@ export default function TranslationModule() {
               onClick={() => {
                 clearInput();
               }}
-              disabled={inputValue === "" || (!isTranslated && isLoading)}
+              disabled={inputValue === "" || isLoading}
             >
               Clear
             </Button>
