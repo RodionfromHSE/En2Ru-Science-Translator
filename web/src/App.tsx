@@ -96,27 +96,6 @@ function App() {
                 <div className={"column flex-1"}>
                   <Card className={"h-full"}>
                     <CardHeader>
-                      <CardTitle>Scientific Specificity</CardTitle>
-                    </CardHeader>
-                    <CardContent className={"p-1"}>
-                      <img
-                        src={"/media/translation.png"}
-                        alt={"Scientific translation"}
-                      />
-                    </CardContent>
-
-                    <CardFooter className={"p-4"}>
-                      <p>
-                        Our translator is specialized for scientific content,
-                        handling LaTeX expressions and terminology from arXiv
-                        papers.
-                      </p>
-                    </CardFooter>
-                  </Card>
-                </div>
-                <div className={"column flex-1"}>
-                  <Card className={"h-full"}>
-                    <CardHeader>
                       <CardTitle>Cross-attention visualization</CardTitle>
                     </CardHeader>
                     <CardContent className={"p-0"}>
@@ -132,6 +111,27 @@ function App() {
                         connections between original and translated text. This
                         feature helps you compare and validate translations
                         visually, enhancing comprehension between languages.
+                      </p>
+                    </CardFooter>
+                  </Card>
+                </div>
+                <div className={"column flex-1"}>
+                  <Card className={"h-full"}>
+                    <CardHeader>
+                      <CardTitle>Scientific Specificity</CardTitle>
+                    </CardHeader>
+                    <CardContent className={"p-1"}>
+                      <img
+                        src={"/media/translation.png"}
+                        alt={"Scientific translation"}
+                      />
+                    </CardContent>
+
+                    <CardFooter className={"p-4"}>
+                      <p>
+                        Our translator is specialized for scientific content,
+                        handling LaTeX expressions and terminology from arXiv
+                        papers.
                       </p>
                     </CardFooter>
                   </Card>
