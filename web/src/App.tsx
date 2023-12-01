@@ -6,6 +6,13 @@ import "bulma/css/bulma.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card.tsx";
 
 function App() {
   return (
@@ -79,6 +86,82 @@ function App() {
           </div>
         </div>
       </div>
+
+      <section className="section">
+        <div className="container is-max-desktop">
+          <div className="columns is-centered has-text-centered">
+            <div className="column is-four-fifths">
+              <h2 className="title is-3">Key Features</h2>
+              <div className={"columns flex"}>
+                <div className={"column flex-1"}>
+                  <Card className={"h-full"}>
+                    <CardHeader>
+                      <CardTitle>Scientific Specificity</CardTitle>
+                    </CardHeader>
+                    <CardContent className={"p-1"}>
+                      <img
+                        src={"/media/translation.png"}
+                        alt={"Scientific translation"}
+                      />
+                    </CardContent>
+
+                    <CardFooter className={"p-4"}>
+                      <p>
+                        Our translator is specialized for scientific content,
+                        handling LaTeX expressions and terminology from arXiv
+                        papers.
+                      </p>
+                    </CardFooter>
+                  </Card>
+                </div>
+                <div className={"column flex-1"}>
+                  <Card className={"h-full"}>
+                    <CardHeader>
+                      <CardTitle>Cross-attention visualization</CardTitle>
+                    </CardHeader>
+                    <CardContent className={"p-0"}>
+                      <img
+                        src={"/media/attention.png"}
+                        alt={"Cross-attention visualized"}
+                      />
+                    </CardContent>
+
+                    <CardFooter className={"p-4"}>
+                      <p>
+                        Dynamic hover-highlighting reveals word-to-word
+                        connections between original and translated text. This
+                        feature helps you compare and validate translations
+                        visually, enhancing comprehension between languages.
+                      </p>
+                    </CardFooter>
+                  </Card>
+                </div>
+                <div className={"column"}>
+                  <Card className={"h-full"}>
+                    <CardHeader>
+                      <CardTitle>Synonyms suggestions</CardTitle>
+                    </CardHeader>
+                    <CardContent className={"p-0"}>
+                      <img
+                        src={"/media/synonyms.png"}
+                        alt={"Synonyms Visualized"}
+                      />
+                    </CardContent>
+
+                    <CardFooter className={"p-4"}>
+                      <p>
+                        Hover over translated words to uncover synonyms. Unveil
+                        the model's comprehension, revealing alternate terms and
+                        offering a glimpse into the model's linguistic choices.
+                      </p>
+                    </CardFooter>
+                  </Card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="section">
         <div className="container is-max-desktop">
